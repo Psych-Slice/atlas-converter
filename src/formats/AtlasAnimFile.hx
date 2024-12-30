@@ -36,14 +36,23 @@ class AtlasAnimFile{
         }
     }
     public function makeJson():String {
-        return Json.stringify(this,null,'\t');
+        return Json.stringify(this);
     }
     private function makeAtlasSparrowLayer(anims:Array<AnimationManifest>):Layer {
         var frames = new Array<OneOfTwo<Frame,Label>>();
         var curFrame = 0;
         for (anim in anims){
             for (item in anim.frames){
-                frames.push(new Frame(item.name,curFrame,1,anim.matrix));
+                var final_matrix = anim.matrix;
+                if(item.frameX != null){
+                    // var frameDiff_x = Std.parseFloat(item.frameWidth)-Std.parseFloat(item.width);
+                    // var frameDiff_y = Std.parseFloat(item.frameHeight)-Std.parseFloat(item.height);
+
+                    var frameX = anim.matrix.offsetX - Std.parseFloat(item.frameX);
+                    var frameY = anim.matrix.offsetY - Std.parseFloat(item.frameY);
+                    final_matrix = new Matrix(frameX,frameY,anim.matrix.scaleX,anim.matrix.scaleY);
+                }
+                frames.push(new Frame(item.name,curFrame,1,final_matrix));
                 curFrame++;
             }
         }

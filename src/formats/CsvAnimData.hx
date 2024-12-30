@@ -3,7 +3,7 @@ package formats;
 class CsvAnimData {
     public static final TEMPLATE:String = 
         "Animation name,Prefix,Offset X,Offset Y,Scale X,Scale Y\n"+
-        "GLOBAL,global,0,0,0,0";
+        "GLOBAL,global,0,0,1,1";
     public function new(csvData:String) {
         var lines = csvData.split('\n');
         lines.remove("");

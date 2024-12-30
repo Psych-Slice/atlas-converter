@@ -15,6 +15,10 @@ class Sparrow {
                 y: frame.get("y"),
                 width: frame.get("width"),
                 height: frame.get("height"),
+                frameY: frame.get("frameY"),
+                frameX: frame.get("frameX"),
+                frameHeight: frame.get("frameHeight"),
+                frameWidth: frame.get("frameWidth")
             });
         }
     }
@@ -27,4 +31,9 @@ typedef SparrowFrame = {
     var y:String;
     var width:String;
     var height:String;
+
+    var frameX:String;
+    var frameY:String;
+    var frameWidth:String;
+    var frameHeight:String;
 }

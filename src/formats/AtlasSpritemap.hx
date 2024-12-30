@@ -17,7 +17,7 @@ class AtlasSpritemap {
         };
     }
     public function makeJson():String {
-        return Json.stringify(core,null,'\t');
+        return Json.stringify(core);
     }
     private function makeMeta(resolution:MetaResolution):Meta {
         return {
