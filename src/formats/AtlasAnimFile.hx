@@ -48,8 +48,8 @@ class AtlasAnimFile{
                     // var frameDiff_x = Std.parseFloat(item.frameWidth)-Std.parseFloat(item.width);
                     // var frameDiff_y = Std.parseFloat(item.frameHeight)-Std.parseFloat(item.height);
 
-                    var frameX = anim.matrix.offsetX - Std.parseFloat(item.frameX);
-                    var frameY = anim.matrix.offsetY - Std.parseFloat(item.frameY);
+                    var frameX =  anim.matrix.offsetX - (Std.parseFloat(item.frameX)*anim.matrix.scaleX);
+                    var frameY = anim.matrix.offsetY - (Std.parseFloat(item.frameY)*anim.matrix.scaleY);
                     final_matrix = new Matrix(frameX,frameY,anim.matrix.scaleX,anim.matrix.scaleY);
                 }
                 frames.push(new Frame(item.name,curFrame,1,final_matrix));

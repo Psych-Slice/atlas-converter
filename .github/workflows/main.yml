@@ -1,0 +1,43 @@
+on: 
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    build-windows:
+        runs-on: windows-latest
+        name: build windows
+        steps:
+            - name: Checkout
+              uses: actions/checkout@main
+            - name: Setup Haxe
+              uses: krdlab/setup-haxe@master
+            - name: Install format
+              run: haxelib install format
+            - name: Build binary
+              run: haxe ./build.hxml
+            - name: Upload Artifact
+              uses: actions/upload-artifact@main
+              with:
+                name: AtlasConverter.exe
+                path: bin/cpp/Main.exe
+                if-no-files-found: error
+    build-linux:
+        runs-on: ubuntu-latest
+        name: build linux
+        steps:
+            - name: Checkout
+              uses: actions/checkout@main
+            - name: Setup Haxe
+              uses: krdlab/setup-haxe@master
+            - name: Install format
+              run: haxelib install format
+            - name: Build binary
+              run: haxe ./build.hxml
+            - name: Upload Artifact
+              uses: actions/upload-artifact@main
+              with:
+                name: AtlasConverter
+                path: bin/cpp/Main
+                if-no-files-found: error
