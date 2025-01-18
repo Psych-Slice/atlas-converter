@@ -13,8 +13,10 @@ jobs:
               uses: actions/checkout@main
             - name: Setup Haxe
               uses: krdlab/setup-haxe@master
-            - name: Install format
-              run: haxelib install format
+            - name: Install libs
+              run: |
+                haxelib install format
+                haxelib install hxcpp
             - name: Build binary
               run: haxe ./build.hxml
             - name: Upload Artifact
@@ -31,8 +33,10 @@ jobs:
               uses: actions/checkout@main
             - name: Setup Haxe
               uses: krdlab/setup-haxe@master
-            - name: Install format
-              run: haxelib install format
+            - name: Install libs
+              run: |
+                haxelib install format
+                haxelib install hxcpp
             - name: Build binary
               run: haxe ./build.hxml
             - name: Upload Artifact
